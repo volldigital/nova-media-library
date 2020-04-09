@@ -2,7 +2,9 @@
 
 namespace ClassicO\NovaMediaLibrary;
 
+use ClassicO\NovaMediaLibrary\Core\CategoryModel;
 use ClassicO\NovaMediaLibrary\Core\Helper;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
@@ -15,6 +17,10 @@ class NovaMediaLibrary extends Tool
      */
     public function boot()
     {
+        if (Auth::user()->can('Mediaverwaltung') === false) {
+            return false;
+        }
+
 	    Nova::script('nova-media-library', __DIR__.'/../dist/js/tool.js');
 	    Nova::style('nova-media-library', __DIR__.'/../dist/css/tool.css');
 
@@ -28,7 +34,9 @@ class NovaMediaLibrary extends Tool
      */
     public function renderNavigation()
     {
-        return view('nova-media-library::navigation');
+        if (Auth::user()->can('Mediaverwaltung')) {
+            return view('nova-media-library::navigation');
+        }
     }
 
 
@@ -60,6 +68,7 @@ class NovaMediaLibrary extends Tool
 
 		    $config['accept'] = preg_filter('/^/', '.', $accept);
 		    $config['types'] = array_keys($types);
+		    $config['categories'] = CategoryModel::all();
 	    }
 
 	    return $config;
