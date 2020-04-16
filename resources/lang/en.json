@@ -59,6 +59,7 @@
 	"All Types": "All Types",
 	"Category": "Category",
 	"All Categories": "All Categories",
+	"Manage Categories": "Manage Categories",
 	"Update": "Update",
 	"Upload": "Upload",
 	"Upload From": "Upload From",
@@ -66,5 +67,10 @@
 	"Uploaded": "Uploaded",
 	"Url": "Url",
 	"URL has been copied": "URL has been copied",
-	"Width x Height": "Width x Height"
+	"Width x Height": "Width x Height",
+	"Drop files to upload": "Drop files to upload",
+	"Preview": "Preview",
+	"Details": "Details",
+	"Choose category": "- Choose category -",
+	"or": "or"
 }
