@@ -1,3 +1,4 @@
+require('es6-promise/auto');
 Nova.booting((Vue, router, store) => {
   Vue.component('index-media-library-field', require('./field/Index/'));
   Vue.component('detail-media-library-field', require('./field/Detail/'));
